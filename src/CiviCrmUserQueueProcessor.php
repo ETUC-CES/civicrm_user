@@ -66,12 +66,12 @@ class CiviCrmUserQueueProcessor implements CiviCrmUserQueueProcessorInterface {
             break;
           }
           catch (\Exception $exception) {
-            watchdog_exception('civicrm_user', $exception);
+            \Drupal\Core\Utility\Error::logException(\Drupal::logger('civicrm_user'), $exception);
           }
         }
       }
       catch (PluginException $exception) {
-        watchdog_exception('civicrm_user', $exception);
+        \Drupal\Core\Utility\Error::logException(\Drupal::logger('civicrm_user'), $exception);
       }
     }
   }
